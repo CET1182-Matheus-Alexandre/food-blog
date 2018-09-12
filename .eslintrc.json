@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "env": {
     "es6": true,
@@ -11,11 +7,9 @@
   },
   "rules": {
     "react/jsx-filename-extension": 0,
+    "react/prefer-stateless-function": 0,
     "id-length": 0,
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": ["error", 2],
     "no-console": 0,
     "no-unused-vars": [
       1,
