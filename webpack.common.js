@@ -37,8 +37,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{ loader: 'url' }]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{ loader: 'file-loader' }]
       }
     ]
   },
