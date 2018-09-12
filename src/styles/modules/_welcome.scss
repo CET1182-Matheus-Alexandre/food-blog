@@ -1,0 +1,57 @@
+.welcome {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  align-items: center;
+
+  @media screen and (max-width: $break-large) {
+    flex-direction: column;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    margin-right: 40px;
+
+    @media screen and (max-width: $break-large) {
+      max-width: 250px;
+      margin: auto;
+    }
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      text-align: justify;
+      text-justify: inter-word;
+
+      @media screen and (max-width: $break-large) {
+        flex-direction: column;
+      }
+
+      p {
+        padding-right: 80px;
+        line-height: 1.6em;
+        letter-spacing: 0.05rem;
+
+        @media screen and (max-width: $break-large) {
+          padding: 0;
+        }
+      }
+    }
+
+    h2 {
+      font-family: $title-font-family;
+      font-size: 40px;
+    }
+  }
+}

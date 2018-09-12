@@ -1,20 +1,21 @@
 @import 'base/config';
 @import 'base/typography';
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
+@import 'base/reset';
 
 html {
   height: 100%;
 }
 
 body {
+  position: relative;
+  min-height: 100%;
   font-family: $header-font-family;
   color: $font-color;
   background: $base-color;
 }
+
+@import 'modules/header';
+@import 'modules/welcome';
+@import 'modules/posts';
+@import 'modules/footer';
+@import 'modules/table';

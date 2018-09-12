@@ -1,0 +1,59 @@
+$footer-bg: url('~./img/i-like-food.svg');
+
+footer > * {
+  display: inline-block;
+}
+
+footer {
+  margin-top: 80px;
+  height: 10em;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: #ffffff;
+  background-image: $footer-bg;
+  width: 100%;
+
+  h3 {
+    margin-left: 25px;
+    color: $font-color;
+    background-color: $base-color;
+    padding: 5px;
+  }
+
+  ul {
+    list-style-type: none;
+    overflow: hidden;
+
+    @media screen and (max-width: $break-medium) {
+      padding-left: 0px !important;
+    }
+  }
+
+  li {
+    float: left;
+    margin: 0px 25px;
+    color: $font-color;
+    background-color: $base-color;
+    padding: 5px;
+
+    @media screen and (max-width: $break-medium) {
+      margin: 0px 3px !important;
+    }
+  }
+
+  img {
+    width: 30px;
+  }
+
+  .footer-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      margin: 5px 10px;
+    }
+  }
+}
