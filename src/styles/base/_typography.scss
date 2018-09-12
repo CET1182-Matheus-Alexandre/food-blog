@@ -1,0 +1,18 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
+
+// Web Fonts
+@font-face {
+  font-family: 'BetterTogether-Script';
+  font-weight: normal;
+  font-style: normal;
+  src: url('~./fonts/BetterTogetherScript.woff') format('woff'),
+    url('~./fonts/BetterTogetherScript.woff2') format('woff2'),
+    url('~./fonts/BetterTogetherScript.ttf') format('truetype');
+}
+
+$default-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$header-font-family: 'BetterTogether-Script';
+$subtitle-font-family: 'Montserrat', sans-serif;
+$title-font-family: 'EB Garamond', serif;
