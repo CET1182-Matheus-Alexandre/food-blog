@@ -6,3 +6,4 @@ dist/
 
 # Coverage test
 coverage/
+.vscode/settings.json
