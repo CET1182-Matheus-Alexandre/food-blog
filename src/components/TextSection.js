@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 export default class TextSection extends Component {
   render() {
     const {
-      image: { imageLink, name },
+      image: { imageLink, name, right },
       children
     } = this.props;
     return (
       <div>
         <section className="welcome">
-          <img src={imageLink} alt={name} />
+          {!right && <img src={imageLink} alt={name} />}
           <div className="about">{children}</div>
+          {right && <img src={imageLink} alt={name} />}
         </section>
       </div>
     );
