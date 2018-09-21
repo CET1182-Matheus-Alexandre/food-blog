@@ -102,7 +102,7 @@
 
   div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin: auto;
 
@@ -121,7 +121,7 @@
         margin-bottom: 40px;
       }
 
-      :hover {
+      &:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       }
 
@@ -172,7 +172,8 @@
   img {
     width: auto;
     height: auto;
-    max-width: 25vw;
+    max-width: 480px;
+    max-height: 320px;
 
     @media screen and (max-width: $break-medium) {
       max-width: 80vw;
