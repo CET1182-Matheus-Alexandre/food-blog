@@ -7,7 +7,7 @@ export default class Card extends Component {
         postLink,
         imageLink,
         imageDescription,
-        author,
+        authorName,
         authorLink,
         dateTime,
         postTitle
@@ -21,7 +21,7 @@ export default class Card extends Component {
             <div className="info">
               <div className="author">
                 <address>
-                  <a href={authorLink}>{author}</a>
+                  <a href={authorLink}>{authorName}</a>
                 </address>
                 <time dateTime={dateTime}>{dateTime}</time>
               </div>
