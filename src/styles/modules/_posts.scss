@@ -34,6 +34,7 @@
       height: auto;
       max-height: 300px;
       margin-right: 80px;
+      border-radius: 8px;
 
       @media screen and (max-width: $break-medium) {
         max-width: 80vw;
