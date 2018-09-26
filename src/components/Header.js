@@ -29,8 +29,6 @@ export default class Header extends Component {
       }
     } = this.props;
 
-    console.log(navItens);
-
     return (
       <header style={{ backgroundImage: `url(${photoLink})` }}>
         <div className="black-screen">
