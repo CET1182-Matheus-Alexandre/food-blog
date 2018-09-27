@@ -1,19 +1,19 @@
 language: node_js
-
 node_js:
 - stable
-
 cache:
   directories:
   - node_modules
-
 script:
 - npm test
-
 after_script:
-  - npm run coveralls
-
+- npm run coveralls
 notifications:
   email:
     on_success: never
     on_failure: always
+deploy:
+  provider: heroku
+  api_key:
+    secure: bxtn+jX3GQSBitkVEd1EmeG88s0qUTxroYSpYi69z28aVrVwaq4iteIOBhs/UX3HoswowabeyR2fqkDMg6Ow0O+/0URqtjbtwoGDXc/iRDrdZ3xypg7H+v8GZDecrceZ0y2xr/Ze/PCJfmzlgmIZ8+1kNYVkne1nLkVqg0Lq/Rpyj2cjjKJpJtHPj0ihHHOiAcjdVQEJEkfGwNofRbBdqIkoa/D2h3dPGv8RJ0lRNXxP93qxumSh/m7XEflb8kZnVbofENGS71ECr7UOKrLRsRi3I5Ku146INq8FDvrVdJmEW5JixoWMCsTWBYxUjHeAxgjArGgQANb7YzJVn1Dn1rcdR44+2UjHLzltUxiQeUNTJKKQ0mnEDcGxuZ2EbdzNnEWjTYRxkdhwR0nVAZ4SNCoxlnWnrjc09r/4G6InS1TVegl3slk95R2gwcsvFxFyzyPRKPHpskuB89GmeItMWW+30nVUGpEq3biU7mbolKrtQkuoTPudd/Q3dnuorC7EFhaJfgiHttnOo02lg4g81fnCCyBSoVv5FGwJtJr3sk3UfDyQEeszz3k7NQgVVMuV6MXkcRXRc82KuTVUewOTjwePsWlDkC+BZdT7op1EdTZMtzcdZgAn3hCx1CXUyWgy2Ia5arljZVZfheDNpXAMAwDjG9s20Ebq6VeSZbeeiMY=
+  app: death-cooks
