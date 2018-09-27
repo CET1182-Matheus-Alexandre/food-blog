@@ -9,9 +9,8 @@
   "scripts": {
     "coverage": "jest --colors --coverage",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
-    "heroku-prebuild": "npm run build",
     "build": "webpack --config webpack.prod.js",
-    "start": "node server/index.js",
+    "start": "npm run build && node server/index.js",
     "devStart": "webpack-dev-server --config webpack.dev.js",
     "test": "npm run lint && npm run jest",
     "jest": "jest ./test",
