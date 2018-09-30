@@ -12,12 +12,12 @@ export default class Home extends Component {
         title="The Best Food"
         subtitle="is the one that you share"
         photo={{
-          src: './src/assets/images/shared-food.jpg',
+          src: 'assets/images/shared-food.jpg',
           authorName: 'rawpixel'
         }}
       >
         <TextSection
-          image={{ imageLink: 'src/assets/images/fish-plate.jpg' }}
+          image={{ imageLink: 'assets/images/fish-plate.jpg' }}
           title="Bem vindo"
         >
           <p>
@@ -41,7 +41,7 @@ export default class Home extends Component {
 
         <TextSection
           image={{
-            imageLink: 'src/assets/images/pizza-plate.jpg',
+            imageLink: 'assets/images/pizza-plate.jpg',
             right: true
           }}
           title="Nosso objetivo"
@@ -68,7 +68,7 @@ export default class Home extends Component {
           <Card
             lastPost={{
               postLink: '#',
-              imageLink: 'src/assets/images/burguer.jpg',
+              imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
               authorLink: 'https://twitter.com/pedr3cal',
@@ -80,7 +80,7 @@ export default class Home extends Component {
           <Card
             lastPost={{
               postLink: '#',
-              imageLink: 'src/assets/images/burguer.jpg',
+              imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
               authorLink: 'https://twitter.com/pedr3cal',
@@ -91,7 +91,7 @@ export default class Home extends Component {
           <Card
             lastPost={{
               postLink: '#',
-              imageLink: 'src/assets/images/burguer.jpg',
+              imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
               authorLink: 'https://twitter.com/pedr3cal',

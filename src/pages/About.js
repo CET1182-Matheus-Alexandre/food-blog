@@ -9,7 +9,7 @@ export default class About extends Component {
         title="About us"
         subtitle="hu3"
         photo={{
-          src: './src/assets/images/brazilian-flag.jpg',
+          src: 'assets/images/brazilian-flag.jpg',
           authorName: 'rawpixel'
         }}
       >

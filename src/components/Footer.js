@@ -12,13 +12,10 @@ export default class Footer extends Component {
               <br />
               <div className="footer-icons">
                 <a href="https://github.com/pedrecal">
-                  <img alt="github logo" src="./src/assets/images/github.png" />
+                  <img alt="github logo" src="assets/images/github.png" />
                 </a>
                 <a href="https://twitter.com/pedr3cal">
-                  <img
-                    alt="twitter logo"
-                    src="./src/assets/images/twitter.png"
-                  />
+                  <img alt="twitter logo" src="assets/images/twitter.png" />
                 </a>
               </div>
             </li>
@@ -26,13 +23,10 @@ export default class Footer extends Component {
               Matheus Almeida <br />
               <div className="footer-icons">
                 <a href="https://github.com/matalmeida">
-                  <img alt="github logo" src="./src/assets/images/github.png" />
+                  <img alt="github logo" src="assets/images/github.png" />
                 </a>
                 <a href="https://twitter.com/mat_almeida">
-                  <img
-                    alt="twitter logo"
-                    src="./src/assets/images/twitter.png"
-                  />
+                  <img alt="twitter logo" src="assets/images/twitter.png" />
                 </a>
               </div>
             </li>

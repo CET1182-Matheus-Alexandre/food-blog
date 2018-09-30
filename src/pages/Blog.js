@@ -9,7 +9,7 @@ export default class Blog extends Component {
         title="Blog"
         subtitle="sweet posts here"
         photo={{
-          src: './src/assets/images/notebook-food.jpg',
+          src: 'assets/images/notebook-food.jpg',
           authorName: 'rawpixel'
         }}
       >
