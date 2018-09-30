@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Page from '../layout/page';
 import TextSection from '../components/TextSection';
 import Card from '../components/Card';
+import CardContainer from '../components/CardContainer';
 
 export default class Home extends Component {
   render() {
@@ -63,45 +64,42 @@ export default class Home extends Component {
             iaculis in. Cras ultricies volutpat felis eget lobortis.
           </p>
         </TextSection>
-        <section id="last-posts">
-          <h2>Últimos posts</h2>
-          <div>
-            <Card
-              lastPost={{
-                postLink: '#',
-                imageLink: 'src/assets/images/burguer.jpg',
-                imageDescription: 'A delicious burguer',
-                authorName: 'Alexandre Pedrecal',
-                authorLink: 'https://twitter.com/pedr3cal',
-                dateTime: '2018-08-19 16:05',
-                postTitle:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscin elit.'
-              }}
-            />
-            <Card
-              lastPost={{
-                postLink: '#',
-                imageLink: 'src/assets/images/burguer.jpg',
-                imageDescription: 'A delicious burguer',
-                authorName: 'Alexandre Pedrecal',
-                authorLink: 'https://twitter.com/pedr3cal',
-                dateTime: '2018-08-19 16:05',
-                postTitle: 'Titulo da Postagem'
-              }}
-            />
-            <Card
-              lastPost={{
-                postLink: '#',
-                imageLink: 'src/assets/images/burguer.jpg',
-                imageDescription: 'A delicious burguer',
-                authorName: 'Alexandre Pedrecal',
-                authorLink: 'https://twitter.com/pedr3cal',
-                dateTime: '2018-08-19 16:05',
-                postTitle: 'Titulo da Postagem'
-              }}
-            />
-          </div>
-        </section>
+        <CardContainer title="Últimos posts">
+          <Card
+            lastPost={{
+              postLink: '#',
+              imageLink: 'src/assets/images/burguer.jpg',
+              imageDescription: 'A delicious burguer',
+              authorName: 'Alexandre Pedrecal',
+              authorLink: 'https://twitter.com/pedr3cal',
+              dateTime: '2018-08-19 16:05',
+              postTitle:
+                'Lorem ipsum dolor sit amet, consectetur adipiscin elit.'
+            }}
+          />
+          <Card
+            lastPost={{
+              postLink: '#',
+              imageLink: 'src/assets/images/burguer.jpg',
+              imageDescription: 'A delicious burguer',
+              authorName: 'Alexandre Pedrecal',
+              authorLink: 'https://twitter.com/pedr3cal',
+              dateTime: '2018-08-19 16:05',
+              postTitle: 'Titulo da Postagem'
+            }}
+          />
+          <Card
+            lastPost={{
+              postLink: '#',
+              imageLink: 'src/assets/images/burguer.jpg',
+              imageDescription: 'A delicious burguer',
+              authorName: 'Alexandre Pedrecal',
+              authorLink: 'https://twitter.com/pedr3cal',
+              dateTime: '2018-08-19 16:05',
+              postTitle: 'Titulo da Postagem'
+            }}
+          />
+        </CardContainer>
       </Page>
     );
   }
