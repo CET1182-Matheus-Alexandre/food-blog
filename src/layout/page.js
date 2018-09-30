@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,19 +9,23 @@ export default class Page extends Component {
   }
 
   render() {
+    const pathN = window.location.pathname.split('/')[1];
+
     const navItens = [
       {
         name: 'Inicio',
-        href: '#',
-        active: true
+        href: '/',
+        active: pathN === ''
       },
       {
         name: 'Blog',
-        href: '#'
+        href: '/blog',
+        active: pathN === 'blog'
       },
       {
         name: 'Sobre nós',
-        href: '#'
+        href: '/about',
+        active: pathN === 'about'
       }
     ];
 
