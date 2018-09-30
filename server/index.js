@@ -7,7 +7,7 @@ const app = express();
 
 app.use(morgan('common'));
 
-app.use('/', expressStaticGzip(path.join(__dirname, './../dist/')));
+app.use('/*', expressStaticGzip(path.join(__dirname, './../dist/')));
 
 app.get('*.js', (req, res, next) => {
   req.url = `${req.url}.gz`;
