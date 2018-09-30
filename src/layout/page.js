@@ -3,6 +3,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default class Page extends Component {
+  componentDidMount() {
+    document.title = this.props.pageTitle;
+  }
+
   render() {
     const navItens = [
       {
