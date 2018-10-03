@@ -10,17 +10,15 @@ export default class Post extends Component {
         postTitle,
         authorLink,
         authorName,
-        dateTime,
-        text
+        dateTime
       },
-      card
+      card,
+      children
     } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <div className={`post${!card ? ' real' : ''}`}>
-          <a href={postLink}>
-            <img src={imageLink} alt={imageDescription} />
-          </a>
+          <img src={imageLink} alt={imageDescription} />
           <div className="details">
             <div className="info">
               <div className="post-title">
@@ -33,7 +31,7 @@ export default class Post extends Component {
                 <time dateTime={dateTime}>{dateTime}</time>
               </div>
             </div>
-            <p className={`post-${card ? 'resume' : 'text'}`}>{text}</p>
+            <p className={`post-${card ? 'resume' : 'text'}`}>{children}</p>
             {card && (
               <a href={postLink} className="see-more">
                 Ler Mais...
@@ -41,7 +39,7 @@ export default class Post extends Component {
             )}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

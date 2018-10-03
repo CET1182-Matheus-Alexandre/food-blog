@@ -15,10 +15,11 @@ describe('Post', () => {
               postTitle: '',
               authorLink: '',
               authorName: '',
-              dateTime: '',
-              text: ''
+              dateTime: ''
             }}
-          />
+          >
+            <h2>a</h2>
+          </Post>
         )
         .toJSON();
 
@@ -37,10 +38,11 @@ describe('Post', () => {
               postTitle: '',
               authorLink: '',
               authorName: '',
-              dateTime: '',
-              text: ''
+              dateTime: ''
             }}
-          />
+          >
+            <h2>a</h2>
+          </Post>
         )
         .toJSON();
 
