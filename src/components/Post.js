@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 
-export default class CardPost extends Component {
+export default class Post extends Component {
   render() {
     const {
-      cardPost: {
+      post: {
         imageLink,
         imageDescription,
         postLink,
         postTitle,
         authorLink,
         authorName,
-        dateTime,
-        postResume
-      }
+        dateTime
+      },
+      card,
+      children
     } = this.props;
     return (
-      <div>
-        <div className="post">
-          <a href={postLink}>
-            <img src={imageLink} alt={imageDescription} />
-          </a>
+      <React.Fragment>
+        <div className={`post${!card ? ' real' : ''}`}>
+          <img src={imageLink} alt={imageDescription} />
           <div className="details">
             <div className="info">
               <div className="post-title">
@@ -32,13 +31,15 @@ export default class CardPost extends Component {
                 <time dateTime={dateTime}>{dateTime}</time>
               </div>
             </div>
-            <p className="post-resume">{postResume}</p>
-            <a href={postLink} className="see-more">
-              Ler Mais...
-            </a>
+            <p className={`post-${card ? 'resume' : 'text'}`}>{children}</p>
+            {card && (
+              <a href={postLink} className="see-more">
+                Ler Mais...
+              </a>
+            )}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

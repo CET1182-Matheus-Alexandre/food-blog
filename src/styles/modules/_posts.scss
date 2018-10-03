@@ -50,7 +50,7 @@
 
     .post-title {
       font-family: $title-font-family;
-      font-size: 50px;
+      font-size: 30px;
 
       @media screen and (max-width: $break-medium) {
         font-size: 20px;
@@ -104,7 +104,7 @@
 
   div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     margin: auto;
 
@@ -117,6 +117,7 @@
       transition: 0.3s;
       border-radius: 10px;
       margin: 0 20px;
+      flex-direction: column;
 
       @media screen and (max-width: $break-medium) {
         margin: auto;
@@ -175,8 +176,7 @@
   img {
     width: auto;
     height: auto;
-    max-width: 480px;
-    max-height: 320px;
+    max-width: 25vw;
 
     @media screen and (max-width: $break-medium) {
       max-width: 80vw;

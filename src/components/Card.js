@@ -14,23 +14,21 @@ export default class Card extends Component {
       }
     } = this.props;
     return (
-      <div>
+      <div className="post">
         <a href={postLink}>
-          <div className="post">
-            <img src={imageLink} alt={imageDescription} />
-            <div className="info">
-              <div className="author">
-                <address>
-                  <a href={authorLink}>{authorName}</a>
-                </address>
-                <time dateTime={dateTime}>{dateTime}</time>
-              </div>
-              <div className="post-title">
-                <a href={postLink}>{postTitle}</a>
-              </div>
-            </div>
-          </div>
+          <img src={imageLink} alt={imageDescription} />
         </a>
+        <div className="info">
+          <div className="author">
+            <address>
+              <a href={authorLink}>{authorName}</a>
+            </address>
+            <time dateTime={dateTime}>{dateTime}</time>
+          </div>
+          <div className="post-title">
+            <a href={postLink}>{postTitle}</a>
+          </div>
+        </div>
       </div>
     );
   }

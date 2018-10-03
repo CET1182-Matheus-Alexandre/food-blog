@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 
 export default class Header extends Component {
   navRender(navItens) {
@@ -6,9 +7,9 @@ export default class Header extends Component {
       const activation = active ? 'active' : ' ';
 
       return (
-        <a href={href} key={parseInt(name, 10) + name}>
+        <Link to={href} key={parseInt(name, 10) + name}>
           <div className={`button ${activation}`}>{name}</div>
-        </a>
+        </Link>
       );
     });
 

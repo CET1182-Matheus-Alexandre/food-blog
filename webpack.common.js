@@ -1,5 +1,6 @@
 const CleanWebPackPlugin = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -8,7 +9,8 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -50,6 +52,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: 'index.html'
     }),
-    new CleanWebPackPlugin(['dist'])
+    new CleanWebPackPlugin(['dist']),
+    new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ])
   ]
 };
