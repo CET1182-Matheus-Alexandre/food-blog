@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CardContainer from '../src/components/CardContainer';
+import CardContainer from '../../src/components/CardContainer';
 
 describe('CardContainer', () => {
   it('should render', () => {
