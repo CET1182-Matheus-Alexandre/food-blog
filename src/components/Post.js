@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export default class CardPost extends Component {
+export default class Post extends Component {
   render() {
     const {
-      cardPost: {
+      post: {
         imageLink,
         imageDescription,
         postLink,
@@ -11,12 +11,13 @@ export default class CardPost extends Component {
         authorLink,
         authorName,
         dateTime,
-        postResume
-      }
+        text
+      },
+      card
     } = this.props;
     return (
       <div>
-        <div className="post">
+        <div className={`post${!card ? ' real' : ''}`}>
           <a href={postLink}>
             <img src={imageLink} alt={imageDescription} />
           </a>
@@ -32,10 +33,12 @@ export default class CardPost extends Component {
                 <time dateTime={dateTime}>{dateTime}</time>
               </div>
             </div>
-            <p className="post-resume">{postResume}</p>
-            <a href={postLink} className="see-more">
-              Ler Mais...
-            </a>
+            <p className={`post-${card ? 'resume' : 'text'}`}>{text}</p>
+            {card && (
+              <a href={postLink} className="see-more">
+                Ler Mais...
+              </a>
+            )}
           </div>
         </div>
       </div>
