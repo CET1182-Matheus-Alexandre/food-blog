@@ -67,7 +67,7 @@ export default class Home extends Component {
         <CardContainer title="Últimos posts">
           <Card
             lastPost={{
-              postLink: '#',
+              postLink: '/post/01',
               imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
@@ -79,7 +79,7 @@ export default class Home extends Component {
           />
           <Card
             lastPost={{
-              postLink: '#',
+              postLink: '/post/02',
               imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
@@ -90,7 +90,7 @@ export default class Home extends Component {
           />
           <Card
             lastPost={{
-              postLink: '#',
+              postLink: '/post/03',
               imageLink: 'assets/images/burguer.jpg',
               imageDescription: 'A delicious burguer',
               authorName: 'Alexandre Pedrecal',
