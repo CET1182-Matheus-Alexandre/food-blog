@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Post from '../../src/components/Post';
+import PostText from '../../src/components/PostText';
 
-describe('Post', () => {
+describe('PostText', () => {
   describe('should render', () => {
     it('as blog post', () => {
       const rendered = renderer
         .create(
-          <Post
+          <PostText
             post={{
               imageLink: '',
               imageDescription: '',
@@ -19,7 +19,7 @@ describe('Post', () => {
             }}
           >
             <h2>a</h2>
-          </Post>
+          </PostText>
         )
         .toJSON();
 
@@ -29,7 +29,7 @@ describe('Post', () => {
     it('as post resume card', () => {
       const rendered = renderer
         .create(
-          <Post
+          <PostText
             card
             post={{
               imageLink: '',
@@ -42,7 +42,7 @@ describe('Post', () => {
             }}
           >
             <h2>a</h2>
-          </Post>
+          </PostText>
         )
         .toJSON();
 
