@@ -1,5 +1,6 @@
 /* global window */
 import React, { Component } from 'react';
+import path from 'path';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -31,6 +32,7 @@ export default class Page extends Component {
 
     const {
       children,
+      rootPath = '.',
       title,
       subtitle,
       photo: { src, authorName }
@@ -43,7 +45,7 @@ export default class Page extends Component {
           title={title}
           subTitle={subtitle}
           photo={{
-            photoLink: src,
+            photoLink: path.join(rootPath, src),
             credits: {
               author: {
                 authorLink: `https://unsplash.com/@${authorName}?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge`,
@@ -57,7 +59,7 @@ export default class Page extends Component {
           }}
         />
         {children}
-        <Footer />
+        <Footer rootPath={rootPath} />
       </div>
     );
   }
