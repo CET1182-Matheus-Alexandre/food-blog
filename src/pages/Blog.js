@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Page from '../layout/page';
 import PostContainer from '../components/PostContainer';
-import Post from '../components/Post';
+import PostText from '../components/PostText';
 
 export default class Blog extends Component {
   render() {
@@ -16,12 +16,12 @@ export default class Blog extends Component {
         }}
       >
         <PostContainer title="Posts">
-          <Post
+          <PostText
             card
             post={{
               imageLink: '/assets/images/burguer.jpg',
               imageDescription: 'A burguer',
-              postLink: '/posts/01',
+              postLink: '/post/01',
               postTitle:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               authorLink: 'https://twitter.com/pedr3cal',
@@ -41,13 +41,13 @@ export default class Blog extends Component {
             dui et congue. Phasellus sed lorem consectetur sem placerat
             pharetra. Aliquam luctus erat massa, vel euismod enim iaculis in.
             Cras ultricies volutpat felis eget lobortis.
-          </Post>
-          <Post
+          </PostText>
+          <PostText
             card
             post={{
               imageLink: '/assets/images/burguer.jpg',
               imageDescription: 'A burguer',
-              postLink: '/posts/01',
+              postLink: '/post/02',
               postTitle:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               authorLink: 'https://twitter.com/pedr3cal',
@@ -61,13 +61,13 @@ export default class Blog extends Component {
             Vestibulum dictum in dui et congue. Phasellus sed lorem consectetur
             sem placerat pharetra. Aliquam luctus erat massa, vel euismod enim
             iaculis in. Cras ultricies volutpat felis eget lobortis.
-          </Post>
-          <Post
+          </PostText>
+          <PostText
             card
             post={{
               imageLink: '/assets/images/burguer.jpg',
               imageDescription: 'A burguer',
-              postLink: '/posts/01',
+              postLink: '/post/03',
               postTitle:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               authorLink: 'https://twitter.com/pedr3cal',
@@ -81,7 +81,7 @@ export default class Blog extends Component {
             Vestibulum dictum in dui et congue. Phasellus sed lorem consectetur
             sem placerat pharetra. Aliquam luctus erat massa, vel euismod enim
             iaculis in. Cras ultricies volutpat felis eget lobortis.
-          </Post>
+          </PostText>
         </PostContainer>
       </Page>
     );

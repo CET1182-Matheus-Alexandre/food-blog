@@ -1,6 +1,7 @@
 import React from 'react';
+import path from 'path';
 
-function Footer() {
+function Footer({ rootPath = './' }) {
   return (
     <div>
       <footer>
@@ -11,10 +12,16 @@ function Footer() {
             <br />
             <div className="footer-icons">
               <a href="https://github.com/pedrecal">
-                <img alt="github logo" src="assets/images/github.png" />
+                <img
+                  alt="github logo"
+                  src={path.join(rootPath, 'assets/images/github.png')}
+                />
               </a>
               <a href="https://twitter.com/pedr3cal">
-                <img alt="twitter logo" src="assets/images/twitter.png" />
+                <img
+                  alt="twitter logo"
+                  src={path.join(rootPath, 'assets/images/twitter.png')}
+                />
               </a>
             </div>
           </li>
@@ -22,10 +29,16 @@ function Footer() {
             Matheus Almeida <br />
             <div className="footer-icons">
               <a href="https://github.com/matalmeida">
-                <img alt="github logo" src="assets/images/github.png" />
+                <img
+                  alt="github logo"
+                  src={path.join(rootPath, 'assets/images/github.png')}
+                />
               </a>
               <a href="https://twitter.com/mat_almeida">
-                <img alt="twitter logo" src="assets/images/twitter.png" />
+                <img
+                  alt="twitter logo"
+                  src={path.join(rootPath, 'assets/images/twitter.png')}
+                />
               </a>
             </div>
           </li>
