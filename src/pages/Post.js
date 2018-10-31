@@ -22,7 +22,7 @@ export default class Post extends Component {
         <PostContainer>
           <PostText
             post={{
-              postLink: '/post/01',
+              postLink: `/post/${postId}`,
               postTitle:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               authorLink: 'https://twitter.com/pedr3cal',
