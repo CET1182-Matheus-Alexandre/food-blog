@@ -23,8 +23,7 @@ export default class Header extends Component {
       photo: {
         photoLink,
         credits: {
-          author: { authorLink, authorName },
-          stock: { stockLink, stockName }
+          author: { authorName }
         }
       }
     } = this.props;
@@ -44,16 +43,7 @@ export default class Header extends Component {
           <div className="hero">
             <h1 className="title">{title}</h1>
           </div>
-          <div className="photo-credit">
-            Foto por{' '}
-            <a href={authorLink}>
-              <u>{authorName}</u>
-            </a>{' '}
-            em{' '}
-            <a href={stockLink}>
-              <u>{stockName}</u>
-            </a>
-          </div>
+          <div className="photo-credit">Foto por {authorName}</div>
         </div>
       </header>
     );

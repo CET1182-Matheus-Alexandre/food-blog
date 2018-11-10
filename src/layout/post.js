@@ -59,7 +59,7 @@ export default class Page extends Component {
           }}
         />
         {children}
-        <Footer rootPath={rootPath} />
+        <Footer rootPath="../" />
       </div>
     );
   }
