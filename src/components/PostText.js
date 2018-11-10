@@ -31,7 +31,7 @@ export default class Post extends Component {
                 <time dateTime={dateTime}>{dateTime}</time>
               </div>
             </div>
-            <p className={`post-${card ? 'resume' : 'text'}`}>{children}</p>
+            <div className={`post-${card ? 'resume' : 'text'}`}>{children}</div>
             {card && (
               <a href={postLink} className="see-more">
                 Ler Mais...

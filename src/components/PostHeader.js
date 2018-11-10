@@ -20,7 +20,6 @@ export default class Header extends Component {
     const {
       navItens,
       title,
-      subTitle,
       photo: {
         photoLink,
         credits: {
