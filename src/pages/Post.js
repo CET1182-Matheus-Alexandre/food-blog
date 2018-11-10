@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Page from '../layout/page';
+import PostPage from '../layout/post';
 import PostContainer from '../components/PostContainer';
 import PostText from '../components/PostText';
 import Card from '../components/Card';
@@ -9,7 +9,7 @@ export default class Post extends Component {
   render() {
     const { postId } = this.props;
     return (
-      <Page
+      <PostPage
         pageTitle={`Shared Food - ${postId}`}
         title={`Post ${postId}`}
         subtitle="is the one that you share"
@@ -134,7 +134,7 @@ export default class Post extends Component {
             }}
           />
         </CardContainer>
-      </Page>
+      </PostPage>
     );
   }
 }

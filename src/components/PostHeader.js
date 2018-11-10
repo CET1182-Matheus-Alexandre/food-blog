@@ -32,7 +32,7 @@ export default class Header extends Component {
 
     return (
       <header
-        className="main-header"
+        className="post-header"
         style={{ backgroundImage: `url(${photoLink})` }}
       >
         <div className="black-screen">
@@ -42,7 +42,6 @@ export default class Header extends Component {
           </div>
           <div className="hero">
             <h1 className="title">{title}</h1>
-            <h4 className="sub-title">{subTitle}</h4>
           </div>
           <div className="photo-credit">
             Foto por{' '}

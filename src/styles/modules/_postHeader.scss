@@ -1,0 +1,30 @@
+.post-header {
+  position: relative;
+  text-align: center;
+  color: $base-color;
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  @media screen and (max-width: $break-medium) {
+    height: 100vh;
+  }
+
+  .black-screen {
+    height: 50vh;
+    @media screen and (max-width: $break-medium) {
+      height: 100vh;
+    }
+  }
+
+  .title {
+    font-family: $subtitle-font-family;
+    font-size: 5em;
+
+    @media screen and (max-width: $break-medium) {
+      font-size: 2em;
+      margin-top: 0px;
+    }
+  }
+}
