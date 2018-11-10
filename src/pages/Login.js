@@ -7,14 +7,14 @@ import 'firebase/auth';
 
 export default class Login extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
     submitTimes: 0,
     redirect: false
   };
 
-  usernameHandler = ({ target: { value } }) => {
-    this.setState({ username: value });
+  emailHandler = ({ target: { value } }) => {
+    this.setState({ email: value });
   };
 
   passwordHandler = ({ target: { value } }) => {
@@ -22,10 +22,10 @@ export default class Login extends Component {
   };
 
   userCreation = () => {
-    const { username, password } = this.state;
+    const { email, password } = this.state;
     firebase
       .auth()
-      .createUserWithEmailAndPassword(username, password)
+      .createUserWithEmailAndPassword(email, password)
       .then(() => window.alert('Usuário criado com sucesso'))
       .catch(() =>
         window.alert(
@@ -35,17 +35,17 @@ export default class Login extends Component {
   };
 
   userSignIn = () => {
-    const { username, password } = this.state;
+    const { email, password } = this.state;
     firebase
       .auth()
-      .signInWithEmailAndPassword(username, password)
+      .signInWithEmailAndPassword(email, password)
       .then(() => this.setState({ redirect: true }))
       .catch(() => window.alert('Ocorreu algum erro na autenticação!'));
   };
 
   submitHandler = (e) => {
     e.preventDefault();
-    const { username, password, submitTimes } = this.state;
+    const { email, password, submitTimes } = this.state;
     if (submitTimes < 1) {
       this.setState({ submitTimes: submitTimes + 1 });
       window.alert('VOCÊ FOI RASQUEADO!');
@@ -53,7 +53,7 @@ export default class Login extends Component {
     }
 
     this.userSignIn();
-    console.log(username, password);
+    console.log(email, password);
   };
 
   render() {
@@ -70,13 +70,9 @@ export default class Login extends Component {
               Clique Aqui
             </a>
           </h2>
-          <label className="form-input" htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              onChange={this.usernameHandler}
-            />
+          <label className="form-input" htmlFor="email">
+            Email:
+            <input type="email" name="email" onChange={this.emailHandler} />
           </label>
           <label className="form-input" htmlFor="password">
             Password:

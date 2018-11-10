@@ -56,7 +56,7 @@ export default class PostCards extends Component {
         return <Card key={post.id} lastPost={postConfig} />;
       });
 
-      return postsCards;
+      return postsCards.slice(0, 3);
     }
 
     return <h1>Carregando</h1>;
