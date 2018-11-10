@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import HtmlToReactParser from 'html-to-react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import Page from '../layout/page';
-import PostContainer from '../components/PostContainer';
-import PostText from '../components/PostText';
+import CardContainer from '../components/CardContainer';
+import Card from '../components/Card';
 
-export default class Blog extends Component {
+export default class PostCards extends Component {
   state = {
     posts: []
   };
@@ -40,48 +38,33 @@ export default class Blog extends Component {
       });
   };
 
-  renderPosts = () => {
+  renderCards = () => {
     const { posts } = this.state;
-    const htmlToReact = new HtmlToReactParser.Parser();
 
     if (posts) {
-      const postsComponents = posts.map((post) => {
+      const postsCards = posts.map((post) => {
         const postConfig = {
+          postLink: `/post/${post.id}`,
           imageLink: post.data.image.imageUrl,
           imageDescription: 'A burguer',
-          postLink: `/post/${post.id}`,
-          postTitle: post.data.title,
-          authorLink: post.author.link,
           authorName: post.author.name,
-          dateTime: new Date(post.data.createdAt.seconds).toDateString()
+          authorLink: post.author.link,
+          dateTime: new Date(post.data.createdAt.seconds).toDateString(),
+          postTitle: post.data.title
         };
 
-        return (
-          <PostText key={post.id} card post={postConfig}>
-            {htmlToReact.parse(post.data.html)}
-          </PostText>
-        );
+        return <Card key={post.id} lastPost={postConfig} />;
       });
 
-      return postsComponents;
+      return postsCards;
     }
 
-    return undefined;
+    return <h1>Carregando</h1>;
   };
 
   render() {
     return (
-      <Page
-        pageTitle="Shared Food - Blog"
-        title="Blog"
-        subtitle="sweet posts here"
-        photo={{
-          src: 'assets/images/notebook-food.jpg',
-          authorName: 'rawpixel'
-        }}
-      >
-        <PostContainer title="Posts">{this.renderPosts()}</PostContainer>
-      </Page>
+      <CardContainer title="Últimos posts">{this.renderCards()}</CardContainer>
     );
   }
 }
