@@ -36,7 +36,9 @@ export default class Header extends Component {
       >
         <div className="black-screen">
           <div className="nav-bar">
-            <div className="logo" />
+            <div className="logo">
+              <img src="/assets/images/logo-banner.png" alt="logo banner" />
+            </div>
             <nav className="main-nav">{this.navRender(navItens)}</nav>
           </div>
           <div className="hero">

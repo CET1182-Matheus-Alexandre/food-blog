@@ -80,6 +80,12 @@
   @media screen and (max-width: $break-medium) {
     width: 100%;
   }
+
+  img {
+    width: auto;
+    height: auto;
+    max-height: 100px;
+  }
 }
 
 .main-nav {

@@ -6,13 +6,19 @@ import Card from '../components/Card';
 import CardContainer from '../components/CardContainer';
 
 export default class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    };
+  }
+
   render() {
     const { postId } = this.props;
     return (
       <PostPage
         pageTitle={`Shared Food - ${postId}`}
-        title={`Post ${postId}`}
-        subtitle="is the one that you share"
+        title={this.state.title}
         photo={{
           src: 'assets/images/burguer.jpg',
           authorName: 'rawpixel'
@@ -23,8 +29,7 @@ export default class Post extends Component {
           <PostText
             post={{
               postLink: `/post/${postId}`,
-              postTitle:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              postTitle: this.state.title,
               authorLink: 'https://twitter.com/pedr3cal',
               authorName: 'Alexandre Pedrecal',
               dateTime: '2018-08-19 16:05'
