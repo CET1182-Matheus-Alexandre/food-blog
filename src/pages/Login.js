@@ -1,12 +1,28 @@
 /* global window */
 /* eslint no-alert: off */
 import React, { Component } from 'react';
+import { Redirect } from '@reach/router';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 export default class Login extends Component {
   state = {
     username: '',
     password: '',
-    submitTimes: 0
+    submitTimes: 0,
+    redirect: false
+  };
+
+  componentDidMount = () => {
+    const config = {
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.FIREBASE_DATABASE_URL,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGIN_SENDER_ID
+    };
+    firebase.initializeApp(config);
   };
 
   usernameHandler = ({ target: { value } }) => {
@@ -15,6 +31,28 @@ export default class Login extends Component {
 
   passwordHandler = ({ target: { value } }) => {
     this.setState({ password: value });
+  };
+
+  userCreation = () => {
+    const { username, password } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(username, password)
+      .then(() => window.alert('Usuário criado com sucesso'))
+      .catch(() =>
+        window.alert(
+          'Ocorreu algum erro na criação do usuário, tente novamente mais tarde!'
+        )
+      );
+  };
+
+  userSignIn = () => {
+    const { username, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(username, password)
+      .then(() => this.setState({ redirect: true }))
+      .catch(() => window.alert('Ocorreu algum erro na autenticação!'));
   };
 
   submitHandler = (e) => {
@@ -26,6 +64,7 @@ export default class Login extends Component {
       return;
     }
 
+    this.userSignIn();
     console.log(username, password);
   };
 
@@ -66,6 +105,7 @@ export default class Login extends Component {
             onClick={this.submitHandler}
           />
         </form>
+        {this.state.redirect && <Redirect noThrow to="/admin" />}
       </div>
     );
   }

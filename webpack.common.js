@@ -1,7 +1,19 @@
+const webpack = require('webpack');
 const CleanWebPackPlugin = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const dotenv = require('dotenv');
+
+// call dotenv and it will return an Object with a parsed key
+const env = dotenv.config().parsed;
+
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  const newPrev = { ...prev };
+  newPrev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return newPrev;
+}, {});
 
 module.exports = {
   entry: {
@@ -53,6 +65,7 @@ module.exports = {
       template: 'index.html'
     }),
     new CleanWebPackPlugin(['dist']),
-    new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ])
+    new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }]),
+    new webpack.DefinePlugin(envKeys)
   ]
 };
