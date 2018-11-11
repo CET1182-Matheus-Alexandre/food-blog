@@ -58,7 +58,7 @@ export default class Blog extends Component {
 
         return (
           <PostText key={post.id} card post={postConfig}>
-            {htmlToReact.parse(post.data.html)}
+            {htmlToReact.parse(post.data.html.split('</p>')[0])}
           </PostText>
         );
       });
