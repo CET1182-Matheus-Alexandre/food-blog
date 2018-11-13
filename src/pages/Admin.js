@@ -25,8 +25,10 @@ export default class Admin extends Component {
     }
 
     this.state = {
-      signed: !!firebase.auth().currentUser,
+      // signed: !!firebase.auth().currentUser,
+      signed: true,
       currentUser: null,
+      userName: '',
       posts: [],
       title: '',
       imageUrl: '',
@@ -52,6 +54,7 @@ export default class Admin extends Component {
               .collection('users')
               .get()
               .then((users) => {
+                let currentUserName = '';
                 users.forEach((user) => {
                   if (user.data().uuid === post.data().author) {
                     newPosts.push({
@@ -60,10 +63,17 @@ export default class Admin extends Component {
                       author: user.data()
                     });
                   }
+                  if (
+                    !this.state.currentUser &&
+                    user.data().uuid === firebase.auth().currentUser
+                  ) {
+                    currentUserName = user.data().name;
+                  }
                 });
                 this.setState({
                   posts: newPosts,
-                  currentUser: firebase.auth().currentUser
+                  currentUser: firebase.auth().currentUser,
+                  userName: currentUserName
                 });
               })
               .catch((error) => console.log('Error getting user: ', error));
@@ -159,64 +169,72 @@ export default class Admin extends Component {
 
   render() {
     const {
+      userName,
       posts,
       signed,
       editorState,
       title,
       imageUrl,
-      imageAuthor,
-      html
+      imageAuthor
     } = this.state;
 
     if (signed) {
       if (posts !== []) {
         return (
           <div>
-            <h1>oi</h1>
-            <button onClick={this.logoutHandler}>Logout</button>
+            <div className="admin-card">
+              <h1 className="gretting">Olá {userName}</h1>
+              <button className="signout-btn" onClick={this.logoutHandler}>
+                Logout
+              </button>
+            </div>
             <form className="new-post-form">
-              <label className="form-input" htmlFor="title">
-                Titulo:
+              <div className="form-input">
+                <span className="label">Titulo:</span>
                 <input
                   type="text"
                   value={title}
                   name="title"
                   onChange={this.titleHandler}
                 />
-              </label>
-              <label className="form-input" htmlFor="imageUrl">
-                Url da Imagem:
-                <input
-                  type="text"
-                  name="imageUrl"
-                  value={imageUrl}
-                  onChange={this.imageUrlHandler}
-                />
-              </label>
-              <label className="form-input" htmlFor="imageAuthor">
-                Autor da Imagem:
-                <input
-                  type="text"
-                  name="imageAuthor"
-                  value={imageAuthor}
-                  onChange={this.imageAuthorHandler}
-                />
-              </label>
+              </div>
+              <div className="image-info">
+                <div className="form-input">
+                  <span className="label">Url da Imagem:</span>
+                  <input
+                    type="text"
+                    name="imageUrl"
+                    value={imageUrl}
+                    onChange={this.imageUrlHandler}
+                  />
+                </div>
+                <div className="form-input">
+                  <span className="label">Autor da Imagem:</span>
+                  <input
+                    type="text"
+                    name="imageAuthor"
+                    value={imageAuthor}
+                    onChange={this.imageAuthorHandler}
+                  />
+                </div>
+              </div>
               <Editor
                 editorState={editorState}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
+                toolbarClassName="demo-toolbar-custom"
+                wrapperClassName="demo-wrapper"
+                editorClassName="demo-editor-custom"
+                editorStyle={{
+                  height: '400px',
+                  borderStyle: 'solid',
+                  borderWidth: '10px',
+                  borderTop: 0,
+                  borderRight: 0,
+                  borderBottom: 0,
+                  borderColor: 'rgba(0, 0, 0, 0.5)',
+                  padding: 5
+                }}
                 onEditorStateChange={this.onEditorStateChange}
               />
-              {/* <label className="form-input" htmlFor="html">
-                Post em Html:
-                <input
-                  type="textarea"
-                  name="html"
-                  onChange={this.htmlHandler}
-                />
-              </label> */}
               <input
                 className="form-submit"
                 type="submit"

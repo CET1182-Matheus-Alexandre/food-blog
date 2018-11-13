@@ -1,0 +1,19 @@
+.admin-card {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signout-btn {
+  height: 25px;
+}
+
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}

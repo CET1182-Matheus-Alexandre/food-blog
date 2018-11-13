@@ -16,12 +16,34 @@
 
 .form-input {
   display: flex;
+  flex: 1;
   margin: 10px 0;
   flex-direction: column;
 
+  .label {
+    margin: 0 0 10px 0;
+  }
+
   input {
     height: 25px;
-    width: 200px;
+    width: 99%;
+    border-style: solid;
+    border-width: 10px;
+    border-bottom-width: 1px;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-top: 0;
+    border-right: 0;
+    font-size: 14px;
+  }
+}
+
+.image-info {
+  display: flex;
+  width: 99%;
+  flex-direction: row;
+
+  input {
+    width: 100%;
   }
 }
 
