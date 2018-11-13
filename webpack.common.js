@@ -37,7 +37,7 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader']
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.(c|(s(a|c)))ss$/,
         use: [
           {
             loader: 'style-loader'
