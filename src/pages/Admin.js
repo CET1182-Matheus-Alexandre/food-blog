@@ -63,10 +63,7 @@ export default class Admin extends Component {
                       author: user.data()
                     });
                   }
-                  if (
-                    !this.state.currentUser &&
-                    user.data().uuid === firebase.auth().currentUser
-                  ) {
+                  if (user.data().uuid === firebase.auth().currentUser.uid) {
                     currentUserName = user.data().name;
                   }
                 });
@@ -240,7 +237,6 @@ export default class Admin extends Component {
               />
             </form>
             {this.renderAllPosts()}
-            {JSON.stringify(posts)}
           </div>
         );
       }
