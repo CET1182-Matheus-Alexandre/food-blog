@@ -79,21 +79,6 @@ export default class Admin extends Component {
               .catch((error) => console.log('Error getting user: ', error));
           });
         });
-
-      // this.db
-      //   .collection('posts')
-      //   .get()
-      //   .then((posts) => {
-      //     const newPosts = [];
-      //     posts.forEach((post) => {
-      //       newPosts.push(post.data());
-      //       console.log(`${post.id} => ${post.data()}`);
-      //     });
-      //     this.setState({
-      //       posts: newPosts,
-      //       currentUser: firebase.auth().currentUser
-      //     });
-      //   });
     }
   };
 
@@ -155,14 +140,26 @@ export default class Admin extends Component {
   };
 
   renderAllPosts = () => {
-    const autores = this.state.posts.map((post) => (
-      <EditionCard
-        key={post.id}
-        id={post.id}
-        post={post.data}
-        author={post.author}
-      />
-    ));
+    const autores = this.state.posts
+      .map((post) => (
+        <EditionCard
+          key={post.id}
+          id={post.id}
+          post={post.data}
+          author={post.author}
+        />
+      ))
+      .sort(
+        (a, b) =>
+          new firebase.firestore.Timestamp(
+            b.props.post.createdAt.seconds,
+            b.props.post.createdAt.nanoseconds
+          ).toDate() -
+          new firebase.firestore.Timestamp(
+            a.props.post.createdAt.seconds,
+            a.props.post.createdAt.nanoseconds
+          ).toDate()
+      );
 
     return autores;
   };
