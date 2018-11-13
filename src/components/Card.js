@@ -23,7 +23,9 @@ export default class Card extends Component {
             <address>
               <a href={authorLink}>{authorName}</a>
             </address>
-            <time dateTime={dateTime}>{dateTime}</time>
+            <time dateTime={dateTime.toDateString()}>
+              {dateTime.toDateString()}
+            </time>
           </div>
           <div className="post-title">
             <a href={postLink}>{postTitle}</a>

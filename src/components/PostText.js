@@ -28,7 +28,9 @@ export default class Post extends Component {
                 <address>
                   <a href={authorLink}>{authorName}</a>
                 </address>
-                <time dateTime={dateTime}>{dateTime}</time>
+                <time dateTime={dateTime.toDateString()}>
+                  {dateTime.toDateString()}
+                </time>
               </div>
             </div>
             <div className={`post-${card ? 'resume' : 'text'}`}>{children}</div>

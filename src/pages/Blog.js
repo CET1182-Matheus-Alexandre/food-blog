@@ -45,23 +45,31 @@ export default class Blog extends Component {
     const htmlToReact = new HtmlToReactParser.Parser();
 
     if (posts) {
-      const postsComponents = posts.map((post) => {
-        const postConfig = {
-          imageLink: post.data.image.imageUrl,
-          imageDescription: 'A burguer',
-          postLink: `/post/${post.id}`,
-          postTitle: post.data.title,
-          authorLink: post.author.link,
-          authorName: post.author.name,
-          dateTime: new Date(post.data.createdAt.seconds).toDateString()
-        };
+      const postsComponents = posts
+        .map((post) => {
+          const postConfig = {
+            imageLink: post.data.image.imageUrl,
+            imageDescription: 'A burguer',
+            postLink: `/post/${post.id}`,
+            postTitle: post.data.title,
+            authorLink: post.author.link,
+            authorName: post.author.name,
+            dateTime: new firebase.firestore.Timestamp(
+              post.data.createdAt.seconds,
+              post.data.createdAt.nanoseconds
+            ).toDate()
+          };
 
-        return (
-          <PostText key={post.id} card post={postConfig}>
-            {htmlToReact.parse(post.data.html.split('</p>')[0])}
-          </PostText>
+          return (
+            <PostText key={post.id} card post={postConfig}>
+              {htmlToReact.parse(post.data.html.split('</p>')[0])}
+            </PostText>
+          );
+        })
+        .sort(
+          (a, b) =>
+            new Date(b.props.post.dateTime) - new Date(a.props.post.dateTime)
         );
-      });
 
       return postsComponents;
     }

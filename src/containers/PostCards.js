@@ -42,19 +42,28 @@ export default class PostCards extends Component {
     const { posts } = this.state;
 
     if (posts) {
-      const postsCards = posts.map((post) => {
-        const postConfig = {
-          postLink: `/post/${post.id}`,
-          imageLink: post.data.image.imageUrl,
-          imageDescription: 'A burguer',
-          authorName: post.author.name,
-          authorLink: post.author.link,
-          dateTime: new Date(post.data.createdAt.seconds).toDateString(),
-          postTitle: post.data.title
-        };
+      const postsCards = posts
+        .map((post) => {
+          const postConfig = {
+            postLink: `/post/${post.id}`,
+            imageLink: post.data.image.imageUrl,
+            imageDescription: 'A burguer',
+            authorName: post.author.name,
+            authorLink: post.author.link,
+            dateTime: new firebase.firestore.Timestamp(
+              post.data.createdAt.seconds,
+              post.data.createdAt.nanoseconds
+            ).toDate(),
+            postTitle: post.data.title
+          };
 
-        return <Card key={post.id} lastPost={postConfig} />;
-      });
+          return <Card key={post.id} lastPost={postConfig} />;
+        })
+        .sort(
+          (a, b) =>
+            new Date(b.props.lastPost.dateTime) -
+            new Date(a.props.lastPost.dateTime)
+        );
 
       return postsCards.slice(0, 3);
     }
