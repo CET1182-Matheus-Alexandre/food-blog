@@ -75,7 +75,10 @@ export default class Post extends Component {
                 postTitle: title,
                 authorLink: postAuthor.link,
                 authorName: postAuthor.name,
-                dateTime: new Date(createdAt.seconds).toDateString()
+                dateTime: new firebase.firestore.Timestamp(
+                  createdAt.seconds,
+                  createdAt.nanoseconds
+                ).toDate()
               }}
             >
               {htmlToReact.parse(html)}
