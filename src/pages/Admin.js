@@ -30,6 +30,7 @@ export default class Admin extends Component {
       loading: false,
       userName: '',
       posts: [],
+      postInEdit: '',
       title: '',
       imageUrl: '',
       imageAuthor: '',
@@ -43,42 +44,39 @@ export default class Admin extends Component {
     const settings = { timestampsInSnapshots: true };
     this.db.settings(settings);
 
-    this.db
-      .collection('posts')
-      .get()
-      .then((posts) => {
-        const newPosts = [];
-        posts.forEach((post) => {
-          this.db
-            .collection('users')
-            .get()
-            .then((users) => {
-              let currentUserName = '';
-              users.forEach((user) => {
-                if (user.data().uuid === post.data().author) {
-                  newPosts.push({
-                    id: post.id,
-                    data: post.data(),
-                    author: user.data()
-                  });
-                }
-                if (user.data().uuid === firebase.auth().currentUser.uid) {
-                  currentUserName = user.data().name;
-                }
-              });
-              this.setState({
-                posts: newPosts,
-                currentUser: firebase.auth().currentUser,
-                userName: currentUserName,
-                loading: false,
-                signed: true
-              });
-            })
-            .catch(() => {
-              this.setState({ loading: false });
+    this.db.collection('posts').onSnapshot((posts) => {
+      const newPosts = [];
+      posts.forEach((post) => {
+        this.db
+          .collection('users')
+          .get()
+          .then((users) => {
+            let currentUserName = '';
+            users.forEach((user) => {
+              if (user.data().uuid === post.data().author) {
+                newPosts.push({
+                  id: post.id,
+                  data: post.data(),
+                  author: user.data()
+                });
+              }
+              if (user.data().uuid === firebase.auth().currentUser.uid) {
+                currentUserName = user.data().name;
+              }
             });
-        });
+            this.setState({
+              posts: newPosts,
+              currentUser: firebase.auth().currentUser,
+              userName: currentUserName,
+              loading: false,
+              signed: true
+            });
+          })
+          .catch(() => {
+            this.setState({ loading: false });
+          });
       });
+    });
   };
 
   onEditorStateChange = (editorState) => {
@@ -103,6 +101,7 @@ export default class Admin extends Component {
 
   cleanState = () => {
     this.setState({
+      postInEdit: '',
       title: '',
       imageUrl: '',
       imageAuthor: '',
@@ -113,20 +112,49 @@ export default class Admin extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const { title, imageUrl, imageAuthor, html, currentUser } = this.state;
-
-    this.db.collection('posts').add({
-      author: currentUser.uid,
-      createdAt: new Date(),
+    const {
+      postInEdit,
       title,
+      imageUrl,
+      imageAuthor,
       html,
-      image: {
-        imageUrl,
-        imageAuthor
-      }
-    });
+      currentUser
+    } = this.state;
 
-    this.cleanState();
+    if (postInEdit === '') {
+      this.db
+        .collection('posts')
+        .add({
+          author: currentUser.uid,
+          createdAt: new Date(),
+          title,
+          html,
+          image: {
+            imageUrl,
+            imageAuthor
+          }
+        })
+        .then(() => this.forceUpdate())
+        .catch(console.log);
+
+      this.cleanState();
+    } else {
+      this.db
+        .collection('posts')
+        .doc(postInEdit)
+        .update({
+          title,
+          html,
+          image: {
+            imageUrl,
+            imageAuthor
+          }
+        })
+        .then(() => this.forceUpdate())
+        .catch(console.log);
+
+      this.cleanState();
+    }
   };
 
   logoutHandler = () => {
@@ -153,6 +181,7 @@ export default class Admin extends Component {
             );
 
             this.setState({
+              postInEdit: post.id,
               title: post.data.title,
               imageUrl: post.data.image.imageUrl,
               imageAuthor: post.data.image.imageAuthor,
