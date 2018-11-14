@@ -15,7 +15,7 @@ describe('PostText', () => {
               postTitle: '',
               authorLink: '',
               authorName: '',
-              dateTime: ''
+              dateTime: new Date()
             }}
           >
             <h2>a</h2>
@@ -38,7 +38,7 @@ describe('PostText', () => {
               postTitle: '',
               authorLink: '',
               authorName: '',
-              dateTime: ''
+              dateTime: new Date()
             }}
           >
             <h2>a</h2>

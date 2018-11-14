@@ -13,7 +13,7 @@ describe('Card', () => {
             imageDescription: 'A delicious burguer',
             authorName: 'Alexandre Pedrecal',
             authorLink: 'https://twitter.com/pedr3cal',
-            dateTime: '2018-08-19 16:05',
+            dateTime: new Date(),
             postTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscin elit.'
           }}
         />
