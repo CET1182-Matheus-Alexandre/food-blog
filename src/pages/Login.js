@@ -45,7 +45,7 @@ export default class Login extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const { email, password, submitTimes } = this.state;
+    const { submitTimes } = this.state;
     if (submitTimes < 1) {
       this.setState({ submitTimes: submitTimes + 1 });
       window.alert('VOCÊ FOI RASQUEADO!');
@@ -53,7 +53,6 @@ export default class Login extends Component {
     }
 
     this.userSignIn();
-    console.log(email, password);
   };
 
   render() {
