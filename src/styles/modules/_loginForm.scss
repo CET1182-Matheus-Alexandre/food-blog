@@ -47,6 +47,13 @@
   }
 }
 
+.send-area {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
 .form-submit {
   width: 100px;
+  height: 25px;
 }

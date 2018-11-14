@@ -25,9 +25,9 @@ export default class Admin extends Component {
     }
 
     this.state = {
-      signed: false,
+      signed: true,
       currentUser: null,
-      loading: true,
+      loading: false,
       userName: '',
       posts: [],
       title: '',
@@ -234,12 +234,11 @@ export default class Admin extends Component {
               }}
               onEditorStateChange={this.onEditorStateChange}
             />
-            <input
-              className="form-submit"
-              type="submit"
-              value="Entrar"
-              onClick={this.submitHandler}
-            />
+            <div className="send-area">
+              <button className="form-submit" onClick={this.submitHandler}>
+                Enviar Postagem
+              </button>
+            </div>
           </form>
           {posts !== [] && this.renderAllPosts()}
         </div>
