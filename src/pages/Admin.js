@@ -25,9 +25,9 @@ export default class Admin extends Component {
     }
 
     this.state = {
-      signed: true,
+      signed: false,
       currentUser: null,
-      loading: false,
+      loading: true,
       userName: '',
       posts: [],
       postInEdit: '',
@@ -89,12 +89,15 @@ export default class Admin extends Component {
   titleHandler = ({ target: { value } }) => {
     this.setState({ title: value });
   };
+
   imageUrlHandler = ({ target: { value } }) => {
     this.setState({ imageUrl: value });
   };
+
   imageAuthorHandler = ({ target: { value } }) => {
     this.setState({ imageAuthor: value });
   };
+
   htmlHandler = ({ target: { value } }) => {
     this.setState({ html: value });
   };
