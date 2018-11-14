@@ -189,7 +189,14 @@ export default class Admin extends Component {
               editorState: EditorState.createWithContent(htmlDraftContent)
             });
           }}
-          onRemove={console.log}
+          onRemove={() =>
+            this.db
+              .collection('posts')
+              .doc(post.id)
+              .delete()
+              .then(console.log)
+              .catch(console.log)
+          }
         />
       ))
       .sort(
