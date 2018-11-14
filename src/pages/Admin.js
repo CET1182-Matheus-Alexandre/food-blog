@@ -25,9 +25,9 @@ export default class Admin extends Component {
     }
 
     this.state = {
-      // signed: !!firebase.auth().currentUser,
-      signed: true,
+      signed: false,
       currentUser: null,
+      loading: true,
       userName: '',
       posts: [],
       title: '',
@@ -39,44 +39,46 @@ export default class Admin extends Component {
   }
 
   componentDidMount = () => {
-    if (this.state.signed) {
-      this.db = firebase.firestore();
-      const settings = { timestampsInSnapshots: true };
-      this.db.settings(settings);
+    this.db = firebase.firestore();
+    const settings = { timestampsInSnapshots: true };
+    this.db.settings(settings);
 
-      this.db
-        .collection('posts')
-        .get()
-        .then((posts) => {
-          const newPosts = [];
-          posts.forEach((post) => {
-            this.db
-              .collection('users')
-              .get()
-              .then((users) => {
-                let currentUserName = '';
-                users.forEach((user) => {
-                  if (user.data().uuid === post.data().author) {
-                    newPosts.push({
-                      id: post.id,
-                      data: post.data(),
-                      author: user.data()
-                    });
-                  }
-                  if (user.data().uuid === firebase.auth().currentUser.uid) {
-                    currentUserName = user.data().name;
-                  }
-                });
-                this.setState({
-                  posts: newPosts,
-                  currentUser: firebase.auth().currentUser,
-                  userName: currentUserName
-                });
-              })
-              .catch((error) => console.log('Error getting user: ', error));
-          });
+    this.db
+      .collection('posts')
+      .get()
+      .then((posts) => {
+        const newPosts = [];
+        posts.forEach((post) => {
+          this.db
+            .collection('users')
+            .get()
+            .then((users) => {
+              let currentUserName = '';
+              users.forEach((user) => {
+                if (user.data().uuid === post.data().author) {
+                  newPosts.push({
+                    id: post.id,
+                    data: post.data(),
+                    author: user.data()
+                  });
+                }
+                if (user.data().uuid === firebase.auth().currentUser.uid) {
+                  currentUserName = user.data().name;
+                }
+              });
+              this.setState({
+                posts: newPosts,
+                currentUser: firebase.auth().currentUser,
+                userName: currentUserName,
+                loading: false,
+                signed: true
+              });
+            })
+            .catch(() => {
+              this.setState({ loading: false });
+            });
         });
-    }
+      });
   };
 
   onEditorStateChange = (editorState) => {
@@ -169,80 +171,80 @@ export default class Admin extends Component {
       editorState,
       title,
       imageUrl,
-      imageAuthor
+      imageAuthor,
+      loading
     } = this.state;
 
-    if (signed) {
-      if (posts !== []) {
-        return (
-          <div>
-            <div className="admin-card">
-              <h1 className="gretting">Olá {userName}</h1>
-              <button className="signout-btn" onClick={this.logoutHandler}>
-                Logout
-              </button>
-            </div>
-            <form className="new-post-form">
-              <div className="form-input">
-                <span className="label">Titulo:</span>
-                <input
-                  type="text"
-                  value={title}
-                  name="title"
-                  onChange={this.titleHandler}
-                />
-              </div>
-              <div className="image-info">
-                <div className="form-input">
-                  <span className="label">Url da Imagem:</span>
-                  <input
-                    type="text"
-                    name="imageUrl"
-                    value={imageUrl}
-                    onChange={this.imageUrlHandler}
-                  />
-                </div>
-                <div className="form-input">
-                  <span className="label">Autor da Imagem:</span>
-                  <input
-                    type="text"
-                    name="imageAuthor"
-                    value={imageAuthor}
-                    onChange={this.imageAuthorHandler}
-                  />
-                </div>
-              </div>
-              <Editor
-                editorState={editorState}
-                toolbarClassName="demo-toolbar-custom"
-                wrapperClassName="demo-wrapper"
-                editorClassName="demo-editor-custom"
-                editorStyle={{
-                  height: '400px',
-                  borderStyle: 'solid',
-                  borderWidth: '10px',
-                  borderTop: 0,
-                  borderRight: 0,
-                  borderBottom: 0,
-                  borderColor: 'rgba(0, 0, 0, 0.5)',
-                  padding: 5
-                }}
-                onEditorStateChange={this.onEditorStateChange}
-              />
-              <input
-                className="form-submit"
-                type="submit"
-                value="Entrar"
-                onClick={this.submitHandler}
-              />
-            </form>
-            {this.renderAllPosts()}
-          </div>
-        );
-      }
+    if (loading) {
       return <h1>Carregando</h1>;
     }
-
+    if (signed) {
+      return (
+        <div>
+          <div className="admin-card">
+            <h1 className="gretting">Olá {userName}</h1>
+            <button className="signout-btn" onClick={this.logoutHandler}>
+              Logout
+            </button>
+          </div>
+          <form className="new-post-form">
+            <div className="form-input">
+              <span className="label">Titulo:</span>
+              <input
+                type="text"
+                value={title}
+                name="title"
+                onChange={this.titleHandler}
+              />
+            </div>
+            <div className="image-info">
+              <div className="form-input">
+                <span className="label">Url da Imagem:</span>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  value={imageUrl}
+                  onChange={this.imageUrlHandler}
+                />
+              </div>
+              <div className="form-input">
+                <span className="label">Autor da Imagem:</span>
+                <input
+                  type="text"
+                  name="imageAuthor"
+                  value={imageAuthor}
+                  onChange={this.imageAuthorHandler}
+                />
+              </div>
+            </div>
+            <Editor
+              editorState={editorState}
+              toolbarClassName="demo-toolbar-custom"
+              wrapperClassName="demo-wrapper"
+              editorClassName="demo-editor-custom"
+              editorStyle={{
+                height: '400px',
+                borderStyle: 'solid',
+                borderWidth: '10px',
+                borderTop: 0,
+                borderRight: 0,
+                borderBottom: 0,
+                borderColor: 'rgba(0, 0, 0, 0.5)',
+                padding: 5
+              }}
+              onEditorStateChange={this.onEditorStateChange}
+            />
+            <input
+              className="form-submit"
+              type="submit"
+              value="Entrar"
+              onClick={this.submitHandler}
+            />
+          </form>
+          {posts !== [] && this.renderAllPosts()}
+        </div>
+      );
+    }
     return <Redirect noThrow to="/" />;
   }
 }
