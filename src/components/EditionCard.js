@@ -12,7 +12,9 @@ export default class EditionCard extends Component {
         createdAt,
         image: { imageUrl }
       },
-      author: { name, link }
+      author: { name, link },
+      onEdit,
+      onRemove
     } = this.props;
 
     return (
@@ -36,8 +38,12 @@ export default class EditionCard extends Component {
           </div>
         </div>
         <div className="options">
-          <span className="option">editar</span>
-          <span className="option">remover</span>
+          <a className="option" href="#" onClick={onEdit}>
+            <span>⚙</span>
+          </a>
+          <a className="option" href="#" onClick={onRemove}>
+            <span>🗑</span>
+          </a>
         </div>
       </div>
     );

@@ -146,6 +146,21 @@ export default class Admin extends Component {
           id={post.id}
           post={post.data}
           author={post.author}
+          onEdit={() => {
+            const htmlDraft = htmlToDraft(post.data.html);
+            const htmlDraftContent = ContentState.createFromBlockArray(
+              htmlDraft.contentBlocks
+            );
+
+            this.setState({
+              title: post.data.title,
+              imageUrl: post.data.image.imageUrl,
+              imageAuthor: post.data.image.imageAuthor,
+              html: post.data.html,
+              editorState: EditorState.createWithContent(htmlDraftContent)
+            });
+          }}
+          onRemove={console.log}
         />
       ))
       .sort(
